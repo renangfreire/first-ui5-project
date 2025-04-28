@@ -2,18 +2,15 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <List headerText="Products" headerLevel="H2" itemPress="onItemPress"  >
-			<StandardListItem type="Active" title="Arroz" counter="5" />
-			<StandardListItem type="Active" title="Feijão" counter="8" />
-			<StandardListItem type="Active" title="Macarrão" counter="10" />
-			<StandardListItem type="Active" title="Óleo de cozinha" counter="3" />
-			<StandardListItem type="Active" title="Leite" counter="7" />
-			<StandardListItem type="Active" title="Café" counter="4" />
-			<StandardListItem type="Active" title="Açúcar" counter="6" />
-			<StandardListItem type="Active" title="Sal" counter="2" />
-			<StandardListItem type="Active" title="Sal" counter="2" />
-			<StandardListItem type="Active" title="Farinha de Trigo" counter="9" />
-			<StandardListItem type="Active" title="Sabonete" counter="11" />
-		</List>
+        <List
+			itemPress="onItemPress"
+			headerText="Produtos Disponíveis"
+			items="{produtosModel>/produtos}">
+
+        <StandardListItem
+			type="Active"
+			title="{produtosModel>nome}"
+			counter="{produtosModel>quantidade}" />
+      </List>
     </Page>
 </mvc:View>
