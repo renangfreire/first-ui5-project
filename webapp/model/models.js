@@ -14,6 +14,12 @@ function (JSONModel, Device) {
             var oModel = new JSONModel(Device);
             oModel.setDefaultBindingMode("OneWay");
             return oModel;
+        },
+        getProdutos: async function(){
+            const model = new JSONModel()
+            await model.loadData("/model/produtos.json")
+            
+            return model.getData()
         }
     };
 
