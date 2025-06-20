@@ -2,15 +2,21 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <List
-			itemPress="onItemPress"
-			headerText="Produtos Disponíveis"
-			items="{produtosModel>/produtos}">
-
-        <StandardListItem
-			type="Active"
-			title="{produtosModel>nome}"
-			counter="{produtosModel>quantidade}" />
+      <List
+        itemPress="onItemPress"
+        headerText="Produtos Disponíveis"
+        items="{produtosModel>/produtos}">
+          <StandardListItem
+            type="Active"
+            title="{produtosModel>nome}"
+            counter="{produtosModel>quantidade}" />
       </List>
+
+      <footer>
+        <OverflowToolbar >
+          <ToolbarSpacer />
+          <Button text="Abrir Diálogo" press="onAbrirDialogo" />
+        </OverflowToolbar>
+      </footer>
     </Page>
 </mvc:View>

@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+
+  <Dialog id="meuDialogo" title="Confirmação">
+    <Text text="Você deseja continuar?"/>
+
+    <beginButton>
+      <Button text="Sim" press=".onConfirmar" />
+    </beginButton>
+
+    <endButton>
+      <Button text="Cancelar" press=".onFecharDialogo('DialogExemplo')" />
+    </endButton>
+  </Dialog>
+
+</core:FragmentDefinition>
