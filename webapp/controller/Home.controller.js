@@ -27,8 +27,8 @@ sap.ui.define([
             } else {
               this[dialogName].open();
             }
-          },
-          criarDialog: async function(sDialogName){
+        },
+        criarDialog: async function(sDialogName){
               const oView = this.getView()
           
               const oDialog = await Fragment.load({
@@ -43,16 +43,16 @@ sap.ui.define([
             this[sDialogName] = oDialog;
             
             return oDialog
-          },
+        },
+    
+        onFecharDialogo: function (sDialogName) {
+          this[sDialogName].close();
+        },
       
-          onFecharDialogo: function (sDialogName) {
-            this[sDialogName].close();
-          },
-      
-          onConfirmar: function () {
-            MessageToast.show("Confirmado!");
+        onConfirmar: function () {
+          MessageToast.show("Confirmado!");
 
-            this['DialogExemplo'].close();
-          }
+          this['DialogExemplo'].close();
+        }
     });
 });
