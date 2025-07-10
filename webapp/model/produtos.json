@@ -1,19 +1,20 @@
 {
     "produtos": [
-        { "nome": "Arroz", "quantidade": 5 },
-        { "nome": "Feijão", "quantidade": 10 },
-        { "nome": "Macarrão", "quantidade": 8 },
-        { "nome": "Óleo de Cozinha", "quantidade": 3 },
-        { "nome": "Leite", "quantidade": 7 },
-        { "nome": "Café", "quantidade": 4 },
-        { "nome": "Açúcar", "quantidade": 6 },
-        { "nome": "Sal", "quantidade": 2 },
-        { "nome": "Farinha de Trigo", "quantidade": 9 },
-        { "nome": "Sabonete", "quantidade": 11 },
-        { "nome": "Detergente", "quantidade": 5 },
-        { "nome": "Papel Higiênico", "quantidade": 12 },
-        { "nome": "Shampoo", "quantidade": 7 },
-        { "nome": "Condicionador", "quantidade": 6 },
-        { "nome": "Creme Dental", "quantidade": 8 }
+        { "nome": "Arroz", "quantidade": 5, "categoria": "Alimentos", "preco": 6.50, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Feijão", "quantidade": 10, "categoria": "Alimentos", "preco": 7.20, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Macarrão", "quantidade": 8, "categoria": "Alimentos", "preco": 4.90, "disponivel": false, "status": "OUT_OF_STOCK" },
+        { "nome": "Óleo de Cozinha", "quantidade": 3, "categoria": "Alimentos", "preco": 8.00, "disponivel": true, "status": "PENDING" },
+        { "nome": "Leite", "quantidade": 7, "categoria": "Bebidas", "preco": 5.50, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Café", "quantidade": 4, "categoria": "Bebidas", "preco": 9.30, "disponivel": false, "status": "OUT_OF_STOCK" },
+        { "nome": "Açúcar", "quantidade": 6, "categoria": "Alimentos", "preco": 3.90, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Sal", "quantidade": 2, "categoria": "Alimentos", "preco": 2.50, "disponivel": false, "status": "OUT_OF_STOCK" },
+        { "nome": "Farinha de Trigo", "quantidade": 9, "categoria": "Alimentos", "preco": 4.20, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Sabonete", "quantidade": 11, "categoria": "Higiene", "preco": 2.80, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Detergente", "quantidade": 5, "categoria": "Limpeza", "preco": 3.10, "disponivel": true, "status": "PENDING" },
+        { "nome": "Papel Higiênico", "quantidade": 12, "categoria": "Higiene", "preco": 6.40, "disponivel": false, "status": "OUT_OF_STOCK" },
+        { "nome": "Shampoo", "quantidade": 7, "categoria": "Higiene", "preco": 10.00, "disponivel": true, "status": "ACTIVE" },
+        { "nome": "Condicionador", "quantidade": 6, "categoria": "Higiene", "preco": 10.50, "disponivel": false, "status": "PENDING" },
+        { "nome": "Creme Dental", "quantidade": 8, "categoria": "Higiene", "preco": 3.90, "disponivel": true, "status": "ACTIVE" }
     ]
 }
+  

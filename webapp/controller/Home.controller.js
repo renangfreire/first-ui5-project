@@ -3,8 +3,11 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
     "studies/firstui5project/model/models",
+    "sap/m/GroupHeaderListItem",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
      "sap/ui/core/Fragment"
-], (Controller, MessageToast, JSONModel, models, Fragment) => {
+], (Controller, MessageToast, JSONModel, models, GroupHeaderListItem, Filter, FilterOperator, Fragment) => {
     "use strict";
 
     return Controller.extend("studies.firstui5project.controller.Home", {
@@ -53,6 +56,29 @@ sap.ui.define([
           MessageToast.show("Confirmado!");
 
           this['DialogExemplo'].close();
+        },
+      
+        criarCabecalhoGrupo: function(oGroup){
+          return new GroupHeaderListItem({
+            title: oGroup.key
+          });
+        },
+        
+        onFiltrarProdutos: function (oEvent) {
+          const sQuery = oEvent.getParameter("newValue");
+          const oList = this.byId("listaProdutos");
+          const oBinding = oList.getBinding("items");
+        
+          let aFiltros = [];
+          if (sQuery) {
+            aFiltros.push(new Filter(
+              "nome",
+              FilterOperator.Contains,
+              sQuery
+            ));
+          }
+        
+          oBinding.filter(aFiltros);
         }
     });
 });

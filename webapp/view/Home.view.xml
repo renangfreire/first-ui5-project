@@ -2,14 +2,35 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+      <OverflowToolbar>
+        <ToolbarSpacer />
+        <SearchField width="22rem" liveChange=".onFiltrarProdutos"></SearchField>
+      </OverflowToolbar>  
       <List
+        id="listaProdutos"
         itemPress="onItemPress"
         headerText="Produtos Disponíveis"
-        items="{produtosModel>/produtos}">
-          <StandardListItem
-            type="Active"
-            title="{produtosModel>nome}"
-            counter="{produtosModel>quantidade}" />
+        items="{
+          path: 'produtosModel>/produtos',
+          sorter: [
+            {
+              path: 'categoria',
+              descending: false,
+              group: true
+            },
+            {
+              path: 'nome',
+              descending: false
+            }
+          ],
+          groupHeaderFactory: '.criarCabecalhoGrupo'
+        }"
+        >
+        <StandardListItem 
+          type="Active"
+          title="{produtosModel>nome}"
+          counter="{produtosModel>quantidade}"
+          description="{produtosModel>categoria}" />
       </List>
 
       <footer>
