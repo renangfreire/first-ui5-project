@@ -6,7 +6,7 @@ sap.ui.define([
     "sap/m/GroupHeaderListItem",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
-], (Controller, MessageToast, JSONModel, models, GroupHeaderListItem) => {
+], (Controller, MessageToast, JSONModel, models, GroupHeaderListItem, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend("studies.firstui5project.controller.Home", {
