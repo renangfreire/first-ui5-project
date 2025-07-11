@@ -11,15 +11,22 @@ sap.ui.define([
 
     return Controller.extend("studies.firstui5project.controller.Home", {
         onInit() {
-            models.getProdutos().then((data) => {
-                const oModel = new JSONModel(data)
-                this.getView().setModel(oModel, "produtosModel");
-            });
+            this.getView().setBusy(true)
+            
+            models.getProdutos()
+                .then((data) => {
+                    const oModel = new JSONModel(data)
+                    this.getView().setModel(oModel, "produtosModel");
+                }).finally(() => {
+                    this.getView().setBusy(false)
+                })
         },
         onItemPress: function (oEvent) {
-            const oItem = oEvent.getParameter('listItem'); // Retorna o elemento clicado (nesse exemplo: o item)
-            
-            MessageToast.show(`O item clicado '${oItem.getTitle()}' possui ${oItem.getCounter()} itens`);
+            const oItem = oEvent.getParameter('listItem');
+            const oContext = oItem.getBindingContext("produtosModel");
+            const oData = oContext.getObject();
+          
+            MessageToast.show(`O item clicado '${oData.nome}' possui ${oData.quantidade} unidades`);
         },
       
         criarCabecalhoGrupo: function(oGroup){
