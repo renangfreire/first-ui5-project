@@ -8,10 +8,15 @@ sap.ui.define([
 
     return Controller.extend("studies.firstui5project.controller.Home", {
         onInit() {
-            models.getProdutos().then((data) => {
-                const oModel = new JSONModel(data)
-                this.getView().setModel(oModel, "produtosModel");
-            });
+            this.getView().setBusy(true)
+            
+            models.getProdutos()
+                .then((data) => {
+                    const oModel = new JSONModel(data)
+                    this.getView().setModel(oModel, "produtosModel");
+                }).finally(() => {
+                    this.getView().setBusy(false)
+                })
         },
         onItemPress: function (oEvent) {
             const oItem = oEvent.getParameter('listItem');
