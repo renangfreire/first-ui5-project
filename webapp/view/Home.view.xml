@@ -26,11 +26,25 @@
           groupHeaderFactory: '.criarCabecalhoGrupo'
         }"
         >
-        <StandardListItem 
-          type="Active"
+        <ObjectListItem
           title="{produtosModel>nome}"
-          counter="{produtosModel>quantidade}"
-          description="{produtosModel>categoria}" />
+          number="{ path: 'produtosModel>preco', formatter: '.formatter.formatarPreco' }"
+          numberUnit="Preço"
+          type="Active"
+          press="onItemPress"
+          >
+
+          <firstStatus>
+            <ObjectStatus
+              text="{ path: 'produtosModel>status', formatter: '.formatter.traduzirStatus' }"
+              state="{ path: 'produtosModel>status', formatter: '.formatter.corStatus' }" />
+          </firstStatus>
+
+          <attributes>
+            <ObjectAttribute text="{produtosModel>categoria}" />
+            <ObjectAttribute text="Qtd: {produtosModel>quantidade}" />
+          </attributes>
+        </ObjectListItem>
       </List>
 
       <footer>
