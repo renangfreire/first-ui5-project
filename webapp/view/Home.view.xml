@@ -2,14 +2,49 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+      <OverflowToolbar>
+        <ToolbarSpacer />
+        <SearchField width="22rem" liveChange=".onFiltrarProdutos"></SearchField>
+      </OverflowToolbar>  
       <List
+        id="listaProdutos"
         itemPress="onItemPress"
         headerText="Produtos Disponíveis"
-        items="{produtosModel>/produtos}">
-          <StandardListItem
-            type="Active"
-            title="{produtosModel>nome}"
-            counter="{produtosModel>quantidade}" />
+        items="{
+          path: 'produtosModel>/produtos',
+          sorter: [
+            {
+              path: 'categoria',
+              descending: false,
+              group: true
+            },
+            {
+              path: 'nome',
+              descending: false
+            }
+          ],
+          groupHeaderFactory: '.criarCabecalhoGrupo'
+        }"
+        >
+        <ObjectListItem
+          title="{produtosModel>nome}"
+          number="{ path: 'produtosModel>preco', formatter: '.formatter.formatarPreco' }"
+          numberUnit="Preço"
+          type="Active"
+          press="onItemPress"
+          >
+
+          <firstStatus>
+            <ObjectStatus
+              text="{ path: 'produtosModel>status', formatter: '.formatter.traduzirStatus' }"
+              state="{ path: 'produtosModel>status', formatter: '.formatter.corStatus' }" />
+          </firstStatus>
+
+          <attributes>
+            <ObjectAttribute text="{produtosModel>categoria}" />
+            <ObjectAttribute text="Qtd: {produtosModel>quantidade}" />
+          </attributes>
+        </ObjectListItem>
       </List>
 
       <footer>
