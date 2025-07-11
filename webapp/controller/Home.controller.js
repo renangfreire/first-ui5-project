@@ -31,9 +31,11 @@ sap.ui.define([
             this.getView().setModel(oModel, "produtosModel");
         },
         onItemPress: function (oEvent) {
-            const oItem = oEvent.getParameter('listItem'); // Retorna o elemento clicado (nesse exemplo: o item)
-            
-            MessageToast.show(`O item clicado '${oItem.getTitle()}' possui ${oItem.getCounter()} itens`);
-        }
+            const oItem = oEvent.getParameter('listItem');
+            const oContext = oItem.getBindingContext("produtosModel");
+            const oData = oContext.getObject();
+          
+            MessageToast.show(`O item clicado '${oData.nome}' possui ${oData.quantidade} unidades`);
+          }
     });
 });
