@@ -5,11 +5,13 @@ sap.ui.define([
     "studies/firstui5project/model/models",
     "sap/m/GroupHeaderListItem",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], (Controller, MessageToast, JSONModel, models, GroupHeaderListItem, Filter, FilterOperator) => {
+    "sap/ui/model/FilterOperator",
+    "studies/firstui5project/model/formatter"
+], (Controller, MessageToast, JSONModel, models, GroupHeaderListItem, Filter, FilterOperator, formatter) => {
     "use strict";
 
     return Controller.extend("studies.firstui5project.controller.Home", {
+        formatter: formatter,
         onInit() {
             models.getProdutos().then((data) => {
                 const oModel = new JSONModel(data)
