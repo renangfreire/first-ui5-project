@@ -28,9 +28,9 @@
         }"
         >
         <ObjectListItem
-          title="{produtosModel>nome}"
+          title="{produtosModel>ProductName}" 
           number="{ path: 'produtosModel>preco', formatter: '.formatter.formatarPreco' }"
-          numberUnit="Preço"
+          numberUnit="Preço" 
           type="DetailAndActive"
           press="onItemPress"
           detailPress="onEditProduct"

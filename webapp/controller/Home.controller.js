@@ -19,7 +19,7 @@ sap.ui.define([
             
             models.getProdutos()
                 .then((data) => {
-                    const oModel = new JSONModel(data)
+                    const oModel = new JSONModel({produtos: data})
                     this.getView().setModel(oModel, "produtosModel");
                 }).finally(() => {
                     this.getView().setBusy(false)

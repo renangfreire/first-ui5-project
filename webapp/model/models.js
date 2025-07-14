@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/model/json/JSONModel",
-    "sap/ui/Device"
+    "sap/ui/Device",
+    "sap/ui/model/odata/v2/ODataModel"
 ], 
-function (JSONModel, Device) {
+function (JSONModel, Device, ODataModel) {
     "use strict";
 
     return {
@@ -10,18 +11,38 @@ function (JSONModel, Device) {
          * Provides runtime information for the device the UI5 app is running on as a JSONModel.
          * @returns {sap.ui.model.json.JSONModel} The device model.
          */
+        getOModelData: function() {
+            const oModel = new ODataModel("/northwind/northwind.svc/")
+
+            return new Promise(function(resolve, reject) {
+                oModel.attachMetadataLoaded(() => {
+                    resolve(oModel)
+                })
+
+                oModel.attachMetadataFailed(() => {
+                    reject("Serviço indisponível")
+                })
+            })
+        },
         createDeviceModel: function () {
             var oModel = new JSONModel(Device);
             oModel.setDefaultBindingMode("OneWay");
             return oModel;
         },
         getProdutos: async function(){
-            const model = new JSONModel()
-            await model.loadData("/model/produtos.json")
+            const oModel = await this.getOModelData()
 
-             
-            
-            return model.getData()
+            return new Promise(async (resolve, reject) => {
+                await oModel.read("/Products", {
+                    success: (oData) => {
+                      resolve(oData.results)
+                    },
+                    error: (error) => {
+                      MessageToast.show("Erro ao carregar dados.");
+                      reject(error)
+                    }
+                });
+            })
         }
     };
 
