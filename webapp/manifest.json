@@ -14,6 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.17.3",
       "toolsId": "111a9653-e976-4aae-90ff-9beb4fd95684"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -51,6 +62,11 @@
         "settings": {
           "bundleName": "studies.firstui5project.i18n.i18n"
         }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {
