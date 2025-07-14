@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  >
+    <Dialog id="produtoDialog" title="{= ${managedProduct>/mode} === 'EDIT' ? 'Edição de Produto' : 'Criação de Produto' }">
+        <VBox class="sapUiSmallMargin">
+            <Input value="{managedProduct>/data/nome}" placeholder="Nome do produto" />
+            <Input class="sapUiSmallMarginTop" value="{managedProduct>/data/quantidade}" type="Number" placeholder="Quantidade" />
+            <Input class="sapUiSmallMarginTop" value="{managedProduct>/data/preco}" type="Number" placeholder="Preço" />
+            <ComboBox class="sapUiSmallMarginTop" width="100%" value="{managedProduct>/data/categoria}" placeholder="Categoria">
+                <core:Item key="Alimentos" text="Alimentos"></core:Item>
+                <core:Item key="Bebidas" text="Bebidas"></core:Item>
+                <core:Item key="Higiene" text="Higiene"></core:Item>
+                <core:Item key="Limpeza" text="Limpeza"></core:Item>
+            </ComboBox>
+        </VBox>
+        <buttons>
+            <Button type="Reject" icon="sap-icon://delete" text="Deletar Produto" visible="{= ${managedProduct>/mode} === 'EDIT'}" press="onExcluirProduto"></Button>
+            <Button type="Emphasized" text="Salvar" press="onSalvarProduto" />
+            <Button text="Cancelar" press="onFecharDialogo('ProdutoDialog')" />
+        </buttons>
+        <beginButton>
+        </beginButton>
+        <endButton>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

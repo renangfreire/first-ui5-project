@@ -5,6 +5,7 @@
       <OverflowToolbar>
         <ToolbarSpacer />
         <SearchField width="22rem" liveChange=".onFiltrarProdutos"></SearchField>
+        <Button type="Emphasized" text="Criar Produto" press=".onCreateProduct"></Button>
       </OverflowToolbar>  
       <List
         id="listaProdutos"
@@ -30,10 +31,10 @@
           title="{produtosModel>nome}"
           number="{ path: 'produtosModel>preco', formatter: '.formatter.formatarPreco' }"
           numberUnit="Preço"
-          type="Active"
+          type="DetailAndActive"
           press="onItemPress"
+          detailPress="onEditProduct"
           >
-
           <firstStatus>
             <ObjectStatus
               text="{ path: 'produtosModel>status', formatter: '.formatter.traduzirStatus' }"
@@ -50,7 +51,7 @@
       <footer>
         <OverflowToolbar >
           <ToolbarSpacer />
-          <Button text="Abrir Diálogo" press="onAbrirDialogo" />
+          <Button text="Abrir Diálogo" press="onAbrirDialogo('DialogExemplo')" />
         </OverflowToolbar>
       </footer>
     </Page>

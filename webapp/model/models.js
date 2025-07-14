@@ -19,7 +19,7 @@ function (JSONModel, Device) {
             const model = new JSONModel()
             await model.loadData("/model/produtos.json")
 
-            await new Promise(resolve => {setTimeout(() => {resolve()}, 2000)})
+             
             
             return model.getData()
         }
