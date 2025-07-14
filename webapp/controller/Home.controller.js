@@ -26,11 +26,12 @@ sap.ui.define([
                 })
         },
         onItemPress: function (oEvent) {
-            const oItem = oEvent.getParameter('listItem');
-            const oContext = oItem.getBindingContext("produtosModel");
-            const oData = oContext.getObject();
-          
-            MessageToast.show(`O item clicado '${oData.nome}' possui ${oData.quantidade} unidades`);
+          const oContext = oEvent.getParameter("listItem").getBindingContext("produtosModel");
+          const sIndex = oContext.getPath().split("/").pop();
+        
+          this.getOwnerComponent()
+              .getRouter()
+              .navTo("detalhes", { produtoIndex: sIndex });
         },
         onAbrirDialogo: function (sDialogName) {
             if (!this[sDialogName]) {

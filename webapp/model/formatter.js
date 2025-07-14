@@ -28,6 +28,10 @@ sap.ui.define([], function () {
 
         visivelSeDisponivel: function (disponivel) {
             return !!disponivel;
+        },
+
+        booleanoParaTexto: function(bBoolean){
+            return bBoolean ? 'Sim' : 'Não'
         }
     };
 });

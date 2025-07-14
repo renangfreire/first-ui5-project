@@ -74,17 +74,22 @@
       },
       "routes": [
         {
-          "name": "RouteHome",
-          "pattern": ":?query:",
-          "target": [
-            "TargetHome"
-          ]
+          "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "detalhes/{produtoIndex}",
+          "name": "detalhes",
+          "target": "detalhes"
         }
       ],
       "targets": {
-        "TargetHome": {
-          "id": "Home",
-          "name": "Home"
+        "home": {
+          "viewName": "Home"
+        },
+        "detalhes": {
+          "viewName": "Detalhes"
         }
       }
     },

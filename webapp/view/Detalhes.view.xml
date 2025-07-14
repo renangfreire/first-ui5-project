@@ -1,0 +1,37 @@
+<mvc:View
+  controllerName="studies.firstui5project.controller.Detalhes"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page
+    title="{produtoModel>/nome}"
+    showNavButton="true"
+    navButtonPress="onNavBack">
+    <content>
+      <ObjectHeader
+        title="{produtoModel>/nome}"
+        number="{ path: 'produtoModel>/preco', formatter: '.formatter.formatarPreco' }"
+        numberUnit="Preço"
+        intro="{produtoModel>/categoria}" />
+
+      <VBox class="sapUiMediumMargin">
+        <ObjectStatus
+          text="{ path: 'produtoModel>/status', formatter: '.formatter.traduzirStatus' }"
+          state="{ path: 'produtoModel>/status', formatter: '.formatter.corStatus' }" />
+
+        <VBox class="sapUiSmallMarginTop">
+            <Label 
+                text="Quantidade" />
+            <Text
+            text="{produtoModel>/quantidade}" />
+        </VBox>
+
+        <VBox class="sapUiSmallMarginTop">
+            <Label 
+                text="Disponível?" />
+            <Text
+            text="{ path: 'produtoModel>/disponivel', formatter: '.formatter.booleanoParaTexto' }" />
+        </VBox>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>
