@@ -34,8 +34,26 @@ function (JSONModel, Device, ODataModel) {
 
             return new Promise(async (resolve, reject) => {
                 await oModel.read("/Products", {
+                    urlParameters: {
+                        $filter: 'UnitPrice gt 20'
+                    },
                     success: (oData) => {
                       resolve(oData.results)
+                    },
+                    error: (error) => {
+                      MessageToast.show("Erro ao carregar dados.");
+                      reject(error)
+                    }
+                });
+            })
+        },
+        getProduto: async function(sID){
+            const oModel = await this.getOModelData()
+
+            return new Promise(async (resolve, reject) => {
+                await oModel.read(`/Products(${sID})`, {
+                    success: (oData) => {
+                      resolve(oData)
                     },
                     error: (error) => {
                       MessageToast.show("Erro ao carregar dados.");

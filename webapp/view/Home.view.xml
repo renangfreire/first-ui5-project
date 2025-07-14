@@ -15,35 +15,29 @@
           path: 'produtosModel>/produtos',
           sorter: [
             {
-              path: 'categoria',
-              descending: false,
-              group: true
-            },
-            {
-              path: 'nome',
+              path: 'ProductName',
               descending: false
             }
-          ],
-          groupHeaderFactory: '.criarCabecalhoGrupo'
+          ]
         }"
         >
         <ObjectListItem
           title="{produtosModel>ProductName}" 
-          number="{ path: 'produtosModel>preco', formatter: '.formatter.formatarPreco' }"
-          numberUnit="Preço" 
+          number="{ path: 'produtosModel>UnitPrice', formatter: '.formatter.formatarPreco' }"
+          numberUnit="BRL" 
           type="DetailAndActive"
           press="onItemPress"
           detailPress="onEditProduct"
           >
           <firstStatus>
             <ObjectStatus
-              text="{ path: 'produtosModel>status', formatter: '.formatter.traduzirStatus' }"
-              state="{ path: 'produtosModel>status', formatter: '.formatter.corStatus' }" />
+              text="{ path: 'produtosModel>Discontinued', formatter: '.formatter.traduzirStatus' }"
+              state="{ path: 'produtosModel>Discontinued', formatter: '.formatter.corStatus' }" />
           </firstStatus>
 
           <attributes>
-            <ObjectAttribute text="{produtosModel>categoria}" />
-            <ObjectAttribute text="Qtd: {produtosModel>quantidade}" />
+            <ObjectAttribute text="Qtd: {produtosModel>UnitsInStock}" />
+            <ObjectAttribute text="{produtosModel>QuantityPerUnit}" />
           </attributes>
         </ObjectListItem>
       </List>

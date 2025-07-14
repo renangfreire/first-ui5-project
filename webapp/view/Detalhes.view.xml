@@ -8,28 +8,20 @@
     navButtonPress="onNavBack">
     <content>
       <ObjectHeader
-        title="{produtoModel>/nome}"
-        number="{ path: 'produtoModel>/preco', formatter: '.formatter.formatarPreco' }"
-        numberUnit="Preço"
-        intro="{produtoModel>/categoria}" />
+        title="{produtoModel>/ProductName}"
+        number="{ path: 'produtoModel>/UnitPrice', formatter: '.formatter.formatarPreco' }"
+        numberUnit="BRL" />
 
       <VBox class="sapUiMediumMargin">
         <ObjectStatus
-          text="{ path: 'produtoModel>/status', formatter: '.formatter.traduzirStatus' }"
-          state="{ path: 'produtoModel>/status', formatter: '.formatter.corStatus' }" />
+          text="{ path: 'produtoModel>/Discontinued', formatter: '.formatter.traduzirStatus' }"
+          state="{ path: 'produtoModel>/Discontinued', formatter: '.formatter.corStatus' }" />
 
         <VBox class="sapUiSmallMarginTop">
             <Label 
                 text="Quantidade" />
             <Text
-            text="{produtoModel>/quantidade}" />
-        </VBox>
-
-        <VBox class="sapUiSmallMarginTop">
-            <Label 
-                text="Disponível?" />
-            <Text
-            text="{ path: 'produtoModel>/disponivel', formatter: '.formatter.booleanoParaTexto' }" />
+            text="{produtoModel>/UnitsInStock}" />
         </VBox>
       </VBox>
     </content>

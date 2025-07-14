@@ -4,26 +4,37 @@ sap.ui.define([], function () {
     return {
         formatarPreco: function (valor) {
             if (!valor) return "R$ 0,00";
-            return "R$ " + valor.toFixed(2).replace(".", ",");
+            const iValue = Number(valor)
+            return "R$ " + iValue.toFixed(2).replace(".", ",");
+        },
+        traduzirStatus: function (bStatus) {
+            if(!bStatus){
+                return "Ativo"
+            }
+
+            return "Descontinuado"
+
+            // const mapa = {
+            //     ACTIVE: "Ativo",
+            //     OUT_OF_STOCK: "Fora de estoque",
+            //     PENDING: "Pendente"
+            // };
+            // return mapa[sStatus] || "Desconhecido";
         },
 
-        traduzirStatus: function (sStatus) {
-            const mapa = {
-                ACTIVE: "Ativo",
-                OUT_OF_STOCK: "Fora de estoque",
-                PENDING: "Pendente"
-            };
-            return mapa[sStatus] || "Desconhecido";
-        },
+        corStatus: function (bStatus) {
+            if(!bStatus){
+                return "Success"
+            }
 
-        corStatus: function (sStatus) {
-            const mapa = {
-                ACTIVE: "Success",
-                OUT_OF_STOCK: "Error",
-                PENDING: "Warning"
-            };
+            return "Error"
+            // const mapa = {
+            //     ACTIVE: "Success",
+            //     OUT_OF_STOCK: "Error",
+            //     PENDING: "Warning"
+            // };
             
-            return mapa[sStatus] || "None";
+            // return mapa[sStatus] || "None";
         },
 
         visivelSeDisponivel: function (disponivel) {

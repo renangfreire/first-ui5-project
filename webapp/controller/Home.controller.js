@@ -27,11 +27,11 @@ sap.ui.define([
         },
         onItemPress: function (oEvent) {
           const oContext = oEvent.getParameter("listItem").getBindingContext("produtosModel");
-          const sIndex = oContext.getPath().split("/").pop();
+          const sProductID = oContext.getProperty("ProductID");
         
           this.getOwnerComponent()
               .getRouter()
-              .navTo("detalhes", { produtoIndex: sIndex });
+              .navTo("detalhes", { produtoIndex: sProductID });
         },
         onAbrirDialogo: function (sDialogName) {
             if (!this[sDialogName]) {
@@ -81,7 +81,7 @@ sap.ui.define([
           let aFiltros = [];
           if (sQuery) {
             aFiltros.push(new Filter(
-              "nome",
+              "ProductName",
               FilterOperator.Contains,
               sQuery
             ));
@@ -132,10 +132,7 @@ sap.ui.define([
           const sMode = oManagedProductModel.getProperty('/mode')
 
           const oProductData = {
-            ...oProduto,
-            preco: Number(oProduto.preco),
-            disponivel: oProduto.quantidade > 5,
-            status: oProduto.quantidade > 0 ? 'ACTIVE' : 'PENDING'
+            ...oProduto
           }
 
           if (sMode === 'EDIT') {

@@ -19,11 +19,9 @@ sap.ui.define([
             const sIndex = oEvent.getParameter("arguments").produtoIndex;
             
             this.getView().setBusy(true)
-            models.getProdutos()
+            models.getProduto(sIndex)
                 .then((data) => {
-                    const iIndex = Number(sIndex)
-                    const oProduct = data?.produtos?.at(iIndex)
-                    const oModel = new JSONModel(oProduct)
+                    const oModel = new JSONModel(data)
                     
                     this.getView().setModel(oModel, "produtoModel");
                 }).finally(() => {
