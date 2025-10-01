@@ -7,12 +7,20 @@ function (JSONModel, Device, ODataModel) {
     "use strict";
 
     return {
+        init(oComponent) {
+            this._oComponent = oComponent 
+        },
+        getOwnerComponent(){
+            return this._oComponent
+        },
         /**
          * Provides runtime information for the device the UI5 app is running on as a JSONModel.
          * @returns {sap.ui.model.json.JSONModel} The device model.
          */
         getOModelData: function() {
-            const oModel = new ODataModel("/northwind/northwind.svc/")
+            const sURI = this.getOwnerComponent().getManifestObject().resolveUri("northwind/northwind.svc/")
+
+            const oModel = new ODataModel(sURI)
 
             return new Promise(function(resolve, reject) {
                 oModel.attachMetadataLoaded(() => {
