@@ -25,6 +25,20 @@
           "odataVersion": "2.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "first_ui5_project-display": {
+          "semanticObject": "first_ui5_project",
+          "action": "display",
+          "title": "{{first_ui5_project-display.flpTitle}}",
+          "subTitle": "{{first_ui5_project-display.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
@@ -115,5 +129,9 @@
       "id": "App",
       "async": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "studiesfirstui5project"
   }
 }
